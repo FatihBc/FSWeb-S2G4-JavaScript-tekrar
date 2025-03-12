@@ -98,14 +98,6 @@ console.log(CemberinAlani(15));
 /*  (oto test yok) sayilar dizisi içinde kaç adet sayı olduğunu konsola yazdırın */
 console.log(sayilar.length); 
 
-let ucetambolunenler,
-  enkucuk,
-  enbuyuk,
-  ucebolunenlerintoplami,
-  besyuzdenkucuksayilar,
-  siralisayilar,
-  tekraredensayilar;
-
 // 3a çözümü
 
 let enbuyuk = sayilar[0];
