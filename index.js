@@ -38,9 +38,11 @@ const sayilar = [
 //Örneğin çözümü:
 function KareninAlani(kenaruzunlugu) {
   return kenaruzunlugu * kenaruzunlugu;
-}
+};
 
 /* (Oto test yok) Yukarıdaki KareninAlani fonksiyonunu kenar uzunluğu = 10 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
+
+console.log(KareninAlani(10));
 
 /* GÖREV 1:  
 - CemberinCevresi fonksiyonunu kullanarak aşağıdaki yönergeleri uygulayın:
@@ -53,9 +55,11 @@ function KareninAlani(kenaruzunlugu) {
 function CemberinCevresi(yaricap) {
   const cevre = 2 * pi * yaricap;
   return cevre;
-}
+};
 
 /* (Oto test yok) Yukarıdaki CemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
+
+console.log(CemberinCevresi(5));
 
 /* 	GÖREV 2:  
 - CemberinAlani fonksiyonunu kullanarak aşağıdaki yönergeleri uygulayın:
@@ -65,11 +69,14 @@ function CemberinCevresi(yaricap) {
 	4. Hesaplanan çemberin alanı döndürülecektir.
 */
 
-function CemberinAlani(/* kodlar buraya */) {
-  /* kodlar buraya */
-}
+function CemberinAlani(yaricap) {
+  const alan = pi * yaricap * yaricap;
+  return alan;
+};
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
+
+console.log(CemberinAlani(15));
 
 /* 	GÖREV 3:
 	- Sayfanın en üstünde global değişken olarak tanımlanmış bir sayilar dizisi bulunmaktadır. Bu dizi içinde 0 ile 1000 arasında rasgele oluşturulmuş tam sayılar ve ondalıklı sayılar bulunmaktadır. Bu diziyi kullanarak aşağıdakileri uygulayın:
@@ -79,7 +86,7 @@ function CemberinAlani(/* kodlar buraya */) {
 		
 		3c. `ucetambolunenler` dizisindeki sayıların toplamını .reduce metoduyla bulup, sonucu `ucebolunenlerintoplami` değişkenine yazdırın (.reduce metodunu kullanın)
 		
-		3d. `besyuzdenkucuksayilar` adında bir dizi oluşturarak, sayilar dizisinin içindeki 500'den küçük sayıları bu diziye atayın (.filter metodunu kullanın)
+		3d. `ç` adında bir dizi oluşturarak, sayilar dizisinin içindeki 500'den küçük sayıları bu diziye atayın (.filter metodunu kullanın)
 		
 		3e. besyuzdenkucuksayilar dizisindeki sayıları küçükten büyüğe sıralayıp `siralisayilar` adındaki bir diziye aktarın (.sort metodunu kullanın)
 		
@@ -89,6 +96,7 @@ function CemberinAlani(/* kodlar buraya */) {
 */
 
 /*  (oto test yok) sayilar dizisi içinde kaç adet sayı olduğunu konsola yazdırın */
+console.log(sayilar.length); 
 
 let ucetambolunenler,
   enkucuk,
@@ -100,27 +108,72 @@ let ucetambolunenler,
 
 // 3a çözümü
 
-/* kodlar buraya */
+let enbuyuk = sayilar[0];
+for (let i = 0; i < sayilar.length; i++) {
+  if (sayilar[i] > enbuyuk) {
+    enbuyuk = sayilar[i];
+  }
+}
+
+let enkucuk = sayilar[0];
+for (let i = 0; i < sayilar.length; i++) {
+  if (sayilar[i] < enkucuk) {
+   enkucuk = sayilar[i];
+  }
+}
 
 // 3b çözümü:
 
-/* kodlar buraya */
+let ucetambolunenler = [];
+sayilar.forEach((sayi) => {
+  if (sayi % 3 === 0) {
+    ucetambolunenler.push(sayi);
+  }
+});
 
 // 3c çözümü:
 
-/* kodlar buraya */
+let ucebolunenlerintoplami = ucetambolunenler.reduce((toplam, sayi) => {
+  return toplam + sayi;
+}
+);
 
 // 3d çözümü
 
-/* kodlar buraya */
+let ç = [];
+sayilar.forEach((sayi) => {
+  if (sayi < 500) {
+    ç.push(sayi);
+  }
+});
 
 // 3e çözümü
 
-/* kodlar buraya */
+let besyuzdenkucuksayilar = sayilar.filter((sayi) => {
+  return sayi < 500;
+});
+
+let siralisayilar = besyuzdenkucuksayilar.sort((a, b) => {
+  return a - b;
+}
+);
 
 // 3f çözümü
 
-/* kodlar buraya */
+let tekraredensayilar = [];
+let sayilarinTekrarSayilari = {};
+for (let i = 0; i < sayilar.length; i++) {
+  if (sayilarinTekrarSayilari[sayilar[i]]) {
+    sayilarinTekrarSayilari[sayilar[i]]++;
+  } else {
+    sayilarinTekrarSayilari[sayilar[i]] = 1;
+  }
+}
+for (let sayi in sayilarinTekrarSayilari) {
+  if (sayilarinTekrarSayilari[sayi] > 1) {
+    tekraredensayilar.push(`${sayi} sayısı ${sayilarinTekrarSayilari[sayi]} kere tekrar edilmiştir`);
+  }
+}
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 
